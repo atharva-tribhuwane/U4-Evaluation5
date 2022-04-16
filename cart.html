@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <div id="checkout">
+        <button><a href="./checkout.html">checkout</a></button>
+    </div>
+</body>
+<script>
+    let cont = document.getElementById("container");
+    cart = JSON.parse(localStorage.getItem("cart"));
+    cart.forEach(function (product) {
+        let products = document.createElement("div");
+        let prod = document.createElement("div");
+        prod.style.display="flex";
+        prod.style.margin = "4%";
+        prod.style.justifyContent = "space-evenly";
+        prod.style.alignItems = "center";
+        let imgdiv = document.createElement("div");
+        imgdiv.style.width="10%";
+
+        let image = document.createElement("img");
+        image.src = product.image_url;
+        image.style.width="50%";
+
+        let name = document.createElement("div");
+        name.innerText = product.name;
+        name.style.margin = "4%";
+
+        let price = document.createElement("div");
+        price.innerText = product.price
+        price.style.margin = "4%";
+
+        let rating = document.createElement("div");
+        rating.innerText = product.rating;
+        rating.style.margin = "4%";
+        imgdiv.append(image);
+        prod.append(imgdiv, name, price, rating);
+        products.append(prod);
+        cont.append(products);
+    });
+
+
+</script>
+
+</html>

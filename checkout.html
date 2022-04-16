@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+</head>
+<body>
+    <div id="container">
+        <table id="tbl" border="1">
+            <tr>
+                <th>Name</th>
+                <th>price</th>
+            </tr>
+        </table>
+        <input type="text" placeholder="Apply Coupon" id="coupon" />
+
+        <Button onclick="order()">Place Order</Button>
+    </div>
+</body>
+<script>
+    let cont = document.getElementById("container");
+    cart = JSON.parse(localStorage.getItem("cart"));
+    let tbl = document.getElementById("tbl");
+    cart.forEach(function (product) {
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        td1.innerText = product.name;
+        let td2 = document.createElement("td");
+        td2.innerText = product.price;
+        tr.append(td1,td2);
+        tbl.append(tr);
+    });
+    let tr = document.createElement("tr");
+        let td1 = document.createElement("th");
+        td1.innerText = "Total";
+        let td2 = document.createElement("td");
+        let tot = 0
+        cart.forEach(function(prod){
+            tot += parseInt(prod.price);
+        })
+        td2.innerText = tot;
+        td2.setAttribute("id","price")
+        tr.append(td1,td2);
+        tbl.append(tr);
+
+
+    document.getElementById("coupon");
+    localStorage.setItem("cart",JSON.stringify(cart));
+    function discount(){
+        alert("Order Placed Succesfully");
+
+
+    }
+</script>
+</html>
